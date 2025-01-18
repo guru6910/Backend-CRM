@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('pull'){
+            steps {
+                git branch: 'dev', url: 'https://github.com/shubhamkalsait/b18-backend.git'
+            }
+        }
+        stage('build'){
+            steps {
+                sh '/opt/maven/bin/mvn clean package'
+            }
+        }
+        stage('docker-build'){
+            steps {
+                sh '''
+                    docker build . -t shubhamkalsait1/b18-backend:latest
+                    docker push shubhamkalsait1/b18-backend:latest
+                    docker rmi shubhamkalsait1/b18-backend:latest
+                '''
+            }
+        }
+        stage('deploy'){
+            steps {
+                sh '''
+                    kubectl apply -f ./yaml/
+                '''
+            }
+        }
+    }
+}
