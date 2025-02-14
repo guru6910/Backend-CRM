@@ -8,7 +8,7 @@ pipeline {
         }
         stage('build'){
             steps {
-                sh 'mvn clean package'
+                sh '/opt/maven/apache-maven-3.9.6/mvn clean package'
             }
         }
         stage('docker-build'){
