@@ -22,9 +22,8 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                sh '''
-                    kubectl apply -f ./yaml/
-                '''
+                sh 'aws eks update-kubeconfig --region us-east-1 --name dyl-cluster'
+                sh 'kubectl apply -f ./yaml/'
             }
         }
     }
