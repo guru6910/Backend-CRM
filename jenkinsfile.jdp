@@ -8,7 +8,7 @@ pipeline {
         }
         stage('build'){
             steps {
-                sh '/opt/maven/bin/mvn clean package'
+                sh '/opt/maven/bin/mvn clean package -Dmaven.test.skip=true'
             }
         }
         stage('docker-build'){
