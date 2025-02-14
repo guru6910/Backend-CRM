@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('pull'){
             steps {
-                git branch: 'dev', url: 'https://github.com/shubhamkalsait/b18-backend.git'
+                git branch: 'dev', url: 'https://github.com/guru6910/Backend-CRM.git'
             }
         }
         stage('build'){
@@ -14,9 +14,9 @@ pipeline {
         stage('docker-build'){
             steps {
                 sh '''
-                    docker build . -t shubhamkalsait1/b18-backend:latest
-                    docker push shubhamkalsait1/b18-backend:latest
-                    docker rmi shubhamkalsait1/b18-backend:latest
+                    docker build . -t guru6910/b18-backend:latest
+                    docker push guru6910/b18-backend:latest
+                    docker rmi guru6910/b18-backend:latest
                 '''
             }
         }
