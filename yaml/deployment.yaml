@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: b18-backend-app
-          image: shubhamkalsait1/b18-backend:latest
+          image: guru6910/b18-backend:latest
           ports:
             - containerPort: 8080
