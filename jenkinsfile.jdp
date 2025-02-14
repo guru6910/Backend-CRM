@@ -13,7 +13,7 @@ pipeline {
         }
         stage('docker-build'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'passwd', usernameVariable: 'uname')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'passwd', usernameVariable: 'uname')]) {
                 sh 'docker login -u "$uname" -p "$passwd"'
                 sh 'docker build . -t guru6910/b18-backend:latest'
                 sh 'docker push guru6910/b18-backend:latest'
